@@ -1,0 +1,393 @@
+<!--
+  Queens 45 BC – Startseite als Divi-Code-Modul
+  Einfügen: Divi-Builder → Sektion (Innenabstand 0) → Zeile mit 1 Spalte (Breite 100 %, max. Breite keine, Innenabstand 0) → Modul „Code“.
+  Kopf und Fuß kommen vom Divi-Theme und sind hier nicht enthalten. Title, Meta-Description, Open Graph und JSON-LD gehören nicht hierher (siehe LIESMICH.md).
+  Bilder: bestehende Mediathek-URLs der Live-Seite.
+-->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400..700;1,400..700&family=Proza+Libre:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Queens 45 BC – Startseite. Alles unter .q45 gekapselt, damit es sich nicht mit dem Divi-CSS beißt.
+   Layout: weiße und dunkelrote Bänder im Wechsel; der Doppelrahmen des Logos kehrt als Motiv in Hero, Raumkarten und Anfrage wieder. */
+.q45 {
+  /* Farben: Divi Global Colors und Button-Presets der Live-Seite */
+  --q45-rot: #680909;        /* --gcid-primary-color */
+  --q45-gold: #e09900;       /* --gcid-secondary-color */
+  --q45-rot-button: #780000; /* Button-Preset Standard */
+  --q45-rot-signal: #c1121f; /* Button-Preset Hero */
+  --q45-nacht: #0e0c19;      /* dunkler Flächenton der Live-Seite */
+  --q45-text: #0a0a0a;       /* --gcid-heading-color */
+  --q45-text-leise: #3c3a47;
+  --q45-hell: #f7f1f0;       /* aufgehellter Schriftton des Logos (#e6d4d3) */
+  --q45-weiss: #ffffff;
+  --q45-linie: #e6d4d3;
+  /* Schriften: wie auf der Live-Seite */
+  --q45-font-titel: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --q45-font-text: 'Proza Libre', Helvetica, Arial, Lucida, sans-serif;
+  --q45-breite: 1160px;
+
+  color-scheme: light;
+  background: var(--q45-weiss);
+  color: var(--q45-text);
+  font-family: var(--q45-font-text);
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+.q45 *, .q45 *::before, .q45 *::after { box-sizing: border-box; }
+.q45 img { display: block; max-width: 100%; height: auto; }
+.q45 p { margin: 0 0 1em; padding: 0; }
+.q45 p:last-child { margin-bottom: 0; }
+.q45 a { color: var(--q45-rot); }
+.q45 a:focus-visible { outline: 3px solid var(--q45-gold); outline-offset: 3px; }
+
+/* ---------- Divi-Grundgerüst: Sektion → Zeile → Spalte ---------- */
+.q45 .et_pb_section { position: relative; margin: 0; padding: clamp(56px, 8vw, 104px) 0; background: var(--q45-weiss); }
+.q45 .et_pb_row {
+  width: 100%; max-width: var(--q45-breite); margin: 0 auto; padding-block: 0;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+  display: flex; flex-wrap: wrap; gap: clamp(28px, 4vw, 56px); align-items: center;
+}
+.q45 .et_pb_row + .et_pb_row { margin-top: clamp(32px, 4vw, 52px); }
+.q45 .et_pb_column { float: none; width: auto; margin: 0; min-width: 0; display: flex; flex-direction: column; gap: 18px; }
+.q45 .et_pb_column_4_4 { flex: 1 1 100%; }
+.q45 .et_pb_column_1_2 { flex: 1 1 400px; }
+.q45 .et_pb_column_1_3 { flex: 1 1 290px; }
+.q45 .et_pb_module { margin: 0; }
+
+/* ---------- Module ---------- */
+.q45 .et_pb_module_header, .q45 h1, .q45 h2, .q45 h3 {
+  font-family: var(--q45-font-titel); font-weight: 600; color: var(--q45-text);
+  line-height: 1.12; margin: 0; padding: 0; text-wrap: balance;
+}
+.q45 h1 { font-size: clamp(2.5rem, 6.2vw, 4.6rem); letter-spacing: -0.01em; }
+.q45 h2 { font-size: clamp(2rem, 4vw, 3rem); }
+.q45 h3 { font-size: 1.75rem; }
+.q45 .et_pb_text_inner { max-width: 62ch; }
+.q45 .et_pb_text_align_center { text-align: center; }
+.q45 .et_pb_text_align_center .et_pb_text_inner { margin-inline: auto; }
+
+.q45 .q45-eyebrow p {
+  font-size: 0.8rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--q45-rot);
+  display: flex; align-items: center; gap: 14px; margin: 0;
+}
+.q45 .q45-eyebrow p::before { content: ""; width: 44px; height: 1px; background: var(--q45-gold); flex: none; }
+.q45 .q45-eyebrow.et_pb_text_align_center p { justify-content: center; }
+.q45 .q45-eyebrow.et_pb_text_align_center p::after { content: ""; width: 44px; height: 1px; background: var(--q45-gold); flex: none; }
+
+.q45 .et_pb_button_module_wrapper { margin-top: 6px; }
+.q45 .et_pb_button_module_wrapper.et_pb_text_align_center { text-align: center; }
+.q45 .et_pb_button {
+  display: inline-block; font-family: var(--q45-font-text); font-weight: 700; font-size: 14px; line-height: 1.4;
+  letter-spacing: 0.04em; text-decoration: none; padding: 13px 26px; border: 0; border-radius: 100px;
+  background: var(--q45-rot-button); color: var(--q45-weiss);
+  transition: background-color .2s ease, color .2s ease;
+}
+.q45 .et_pb_button::after, .q45 .et_pb_button::before { display: none; }
+.q45 .et_pb_button:hover { background: var(--q45-rot); color: var(--q45-gold); padding: 13px 26px; border: 0; }
+.q45 .et_pb_button.q45-btn-signal { background: var(--q45-rot-signal); }
+.q45 .et_pb_button.q45-btn-hell { background: var(--q45-weiss); color: var(--q45-rot-button); }
+.q45 .et_pb_button.q45-btn-hell:hover { background: var(--q45-gold); color: var(--q45-nacht); }
+
+.q45 .et_pb_image { line-height: 0; }
+.q45 .et_pb_image_wrap { display: block; position: relative; }
+.q45 .et_pb_image img { width: 100%; object-fit: cover; }
+/* Doppelrahmen wie im Logo */
+.q45 .q45-rahmen .et_pb_image_wrap { padding: 10px; border: 1px solid var(--q45-rot); }
+.q45 .q45-rahmen .et_pb_image_wrap::after { content: ""; position: absolute; inset: 4px; border: 1px solid var(--q45-gold); pointer-events: none; }
+.q45 .q45-quer img { aspect-ratio: 3 / 2; }
+.q45 .q45-hoch img { aspect-ratio: 4 / 5; }
+
+/* ---------- Hero ---------- */
+.q45 .q45-hero { background: var(--q45-nacht) center / cover no-repeat; padding: clamp(72px, 12vw, 150px) 0; }
+.q45 .q45-hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(14,12,25,.62), rgba(60,6,6,.72)); }
+.q45 .q45-hero .et_pb_row { position: relative; }
+.q45 .q45-hero .et_pb_column { align-items: center; text-align: center; gap: 22px; }
+.q45 .q45-hero h1, .q45 .q45-hero .et_pb_text { color: var(--q45-weiss); }
+.q45 .q45-hero .q45-eyebrow p { color: var(--q45-gold); }
+.q45 .q45-hero .et_pb_text_inner { font-size: 1.15rem; max-width: 56ch; }
+.q45 .q45-hero h1 { max-width: 16ch; }
+.q45 .q45-hero .et_pb_column::before,
+.q45 .q45-hero .et_pb_column::after { content: ""; width: min(220px, 60%); height: 5px; border-block: 1px solid var(--q45-gold); }
+
+/* ---------- Bänder ---------- */
+.q45 .q45-band-hell { background: var(--q45-hell); }
+.q45 .q45-band-rot { background: var(--q45-rot); }
+.q45 .q45-band-rot h2, .q45 .q45-band-rot .et_pb_text { color: var(--q45-weiss); }
+.q45 .q45-band-rot .q45-eyebrow p { color: var(--q45-gold); }
+.q45 .q45-band-rot .q45-rahmen .et_pb_image_wrap { border-color: rgba(255,255,255,.55); }
+
+/* ---------- Räume ---------- */
+.q45 .q45-raeume .et_pb_row { align-items: stretch; }
+.q45 .q45-raum { background: var(--q45-weiss); border: 1px solid var(--q45-linie); padding: 14px 14px 26px; gap: 12px; }
+.q45 .q45-raum > :not(.et_pb_image) { padding-inline: 10px; }
+.q45 .q45-raum .et_pb_button_module_wrapper { margin-top: auto; padding-top: 10px; }
+.q45 .q45-raum .q45-unterzeile p { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--q45-rot); margin: 0; }
+.q45 .q45-raum .et_pb_text:not(.q45-platzhalter) { font-size: 0.97rem; }
+.q45 .q45-platzhalter {
+  aspect-ratio: 3 / 2; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center;
+  background: var(--q45-rot); color: var(--q45-weiss); outline: 1px solid var(--q45-linie); outline-offset: -9px; padding: 24px;
+  font-family: var(--q45-font-titel); font-size: 1.5rem; line-height: 1.2;
+}
+.q45 .q45-platzhalter small { font-family: var(--q45-font-text); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--q45-gold); }
+
+.q45 .q45-tabelle { width: 100%; overflow-x: auto; }
+.q45 .q45-tabelle .et_pb_text_inner { max-width: none; }
+.q45 .q45-tabelle table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 0.95rem; font-variant-numeric: tabular-nums; background: var(--q45-weiss); }
+.q45 .q45-tabelle caption { caption-side: top; text-align: left; font-family: var(--q45-font-titel); font-size: 1.6rem; font-weight: 600; padding-bottom: 12px; color: var(--q45-text); }
+.q45 .q45-tabelle th, .q45 .q45-tabelle td { padding: 12px 14px; text-align: right; border: 0; border-bottom: 1px solid var(--q45-linie); }
+.q45 .q45-tabelle th:first-child, .q45 .q45-tabelle td:first-child { text-align: left; }
+.q45 .q45-tabelle thead th { font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--q45-rot); border-bottom: 2px solid var(--q45-rot); font-weight: 600; }
+.q45 .q45-tabelle tbody th { font-weight: 600; color: var(--q45-text); }
+.q45 .q45-tabelle .q45-hinweis { font-size: 0.85rem; color: var(--q45-text-leise); margin-top: 10px; }
+
+/* ---------- Ausstattung / Kontakt (Blurbs) ---------- */
+.q45 .q45-blurbs .et_pb_row { align-items: stretch; }
+.q45 .et_pb_blurb { background: transparent; }
+.q45 .et_pb_blurb_content { max-width: none; margin: 0; text-align: left; }
+.q45 .et_pb_blurb_container { display: flex; flex-direction: column; gap: 10px; text-align: left; }
+.q45 .et_pb_blurb .et_pb_module_header { font-size: 1.6rem; padding: 14px 0 0; border-top: 5px double var(--q45-gold); }
+.q45 .et_pb_blurb_description { max-width: 46ch; }
+.q45 .q45-kontakt { padding-block: clamp(40px, 6vw, 72px); }
+.q45 .q45-kontakt .et_pb_row { align-items: flex-start; }
+.q45 .q45-kontakt .et_pb_blurb .et_pb_module_header { font-family: var(--q45-font-text); font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--q45-rot); }
+.q45 .q45-kontakt .et_pb_blurb_description { font-family: var(--q45-font-titel); font-size: 1.45rem; line-height: 1.3; font-weight: 500; overflow-wrap: anywhere; }
+.q45 .q45-kontakt a { color: inherit; text-decoration-color: var(--q45-gold); text-underline-offset: 4px; }
+
+/* ---------- Anfrage ---------- */
+.q45 .q45-anfrage { background: var(--q45-nacht) center / cover no-repeat; padding: clamp(64px, 9vw, 120px) 0; }
+.q45 .q45-anfrage::before { content: ""; position: absolute; inset: 0; background: rgba(104, 9, 9, .86); }
+.q45 .q45-anfrage .et_pb_row { position: relative; }
+.q45 .q45-anfrage .et_pb_column {
+  align-items: center; text-align: center; gap: 20px; padding: clamp(32px, 6vw, 64px) clamp(20px, 5vw, 56px);
+  border: 1px solid rgba(255,255,255,.7); outline: 1px solid var(--q45-gold); outline-offset: -8px;
+}
+.q45 .q45-anfrage h2, .q45 .q45-anfrage .et_pb_text { color: var(--q45-weiss); }
+
+/* ---------- Kopf und Fuß (im Divi-Theme: Header/Footer bzw. Theme Builder) ---------- */
+.q45 .q45-topbar { background: var(--q45-rot); color: var(--q45-weiss); font-size: 0.85rem; }
+.q45 .q45-topbar .q45-innen, .q45 .q45-kopf .q45-innen, .q45 .q45-fuss .q45-innen {
+  max-width: var(--q45-breite); margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px));
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 24px;
+}
+.q45 .q45-topbar .q45-innen { padding-block: 8px; justify-content: flex-end; }
+.q45 .q45-topbar a { color: inherit; text-decoration: none; }
+.q45 .q45-topbar a:hover { color: var(--q45-gold); }
+.q45 .q45-kopf { background: var(--q45-weiss); border-bottom: 1px solid var(--q45-linie); }
+.q45 .q45-kopf .q45-innen { padding-block: 14px; }
+.q45 .q45-logo img { width: 190px; }
+.q45 .q45-nav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 26px; align-items: center; }
+.q45 .q45-nav a { color: var(--q45-text); text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 6px 0; border-bottom: 2px solid transparent; }
+.q45 .q45-nav a:hover, .q45 .q45-nav a[aria-current="page"] { border-bottom-color: var(--q45-gold); color: var(--q45-rot); }
+.q45 .q45-nav .et_pb_button { color: var(--q45-weiss); border-bottom: 0; padding: 10px 20px; }
+.q45 .q45-nav .et_pb_button:hover { color: var(--q45-gold); padding: 10px 20px; }
+.q45 .q45-fuss { background: var(--q45-nacht); color: rgba(255,255,255,.82); font-size: 0.88rem; }
+.q45 .q45-fuss .q45-innen { padding-block: 22px; }
+.q45 .q45-fuss a { color: var(--q45-weiss); }
+.q45 .q45-fuss ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 22px; }
+
+@media (max-width: 640px) {
+  .q45 { font-size: 16px; }
+  .q45 .q45-kopf .q45-innen { justify-content: center; }
+  .q45 .q45-nav ul { justify-content: center; }
+  .q45 .q45-topbar .q45-innen { justify-content: center; }
+  .q45 .q45-fuss .q45-innen { justify-content: center; text-align: center; }
+  .q45 .q45-eyebrow.et_pb_text_align_center p::before, .q45 .q45-eyebrow.et_pb_text_align_center p::after { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .q45 * { transition: none !important; } }
+</style>
+<div class="q45">
+<!-- ============================================================
+     SEKTION 1 · HERO
+     Divi: Sektion (regulär), Hintergrundbild „Großer Saal“ + dunkler Verlauf
+     Zeile: 1 Spalte (4_4)
+     Module: Text (Dachzeile) · Überschrift (H1) · Text · Button
+     ============================================================ -->
+<div class="et_pb_section et_section_regular q45-hero" id="start" style="background-image:url('https://queens45.de/wp-content/uploads/2026/10/Grosser-Saal-rund-eckig-scaled.jpg')">
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_4_4 et-last-child">
+      <div class="et_pb_module et_pb_text et_pb_text_align_center q45-eyebrow"><div class="et_pb_text_inner"><p>Eventlocation in Berlin-Charlottenburg</p></div></div>
+      <div class="et_pb_module et_pb_heading"><div class="et_pb_heading_container"><h1 class="et_pb_module_header">Ihre Veranstaltung im Glanz der Goldenen 20er</h1></div></div>
+      <div class="et_pb_module et_pb_text et_pb_text_align_center"><div class="et_pb_text_inner"><p>Feiern, tagen oder tanzen Sie im Queens 45 BC: Historische Säle und das Flair eines Berliner Ballhauses geben Ihrem Anlass eine besondere Bühne.</p></div></div>
+      <div class="et_pb_module et_pb_button_module_wrapper et_pb_text_align_center"><a class="et_pb_button q45-btn-signal" href="https://queens45.de/?page_id=183">Jetzt unverbindlich anfragen</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SEKTION 2 · ANLÄSSE
+     Divi: Sektion (regulär), Hintergrund weiß
+     Zeile: 2 Spalten (1_2 + 1_2)
+     Spalte 1: Bild · Spalte 2: Text (Dachzeile) · Überschrift (H2) · Text
+     ============================================================ -->
+<div class="et_pb_section et_section_regular" id="anlaesse">
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_1_2">
+      <div class="et_pb_module et_pb_image q45-rahmen q45-quer"><span class="et_pb_image_wrap"><img src="https://queens45.de/wp-content/uploads/2026/10/Eingang-Bunt.jpeg" width="1182" height="665" loading="lazy" alt="Beleuchteter Eingang des Queens 45 BC mit rotem Teppich in Berlin-Charlottenburg"></span></div>
+    </div>
+    <div class="et_pb_column et_pb_column_1_2 et-last-child">
+      <div class="et_pb_module et_pb_text q45-eyebrow"><div class="et_pb_text_inner"><p>Feiern, tagen, tanzen</p></div></div>
+      <div class="et_pb_module et_pb_heading"><div class="et_pb_heading_container"><h2 class="et_pb_module_header">Für jeden Anlass die richtige Bühne</h2></div></div>
+      <div class="et_pb_module et_pb_text"><div class="et_pb_text_inner"><p>Ob festlicher Empfang, produktives Treffen oder rauschende Ballnacht: Im Queens 45 BC finden Sie Räume für Veranstaltungen nach Ihren Vorstellungen.</p></div></div>
+      <div class="et_pb_module et_pb_button_module_wrapper"><a class="et_pb_button" href="#raeume">Räume ansehen</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SEKTION 3 · HOCHZEIT
+     Divi: Sektion (regulär), Hintergrund hell (#f7f1f0)
+     Zeile: 2 Spalten (1_2 + 1_2)
+     Spalte 1: Text (Dachzeile) · Überschrift (H2) · Text · Button · Spalte 2: Bild (Hochformat)
+     ============================================================ -->
+<div class="et_pb_section et_section_regular q45-band-hell" id="hochzeit">
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_1_2">
+      <div class="et_pb_module et_pb_text q45-eyebrow"><div class="et_pb_text_inner"><p>Hochzeitslocation</p></div></div>
+      <div class="et_pb_module et_pb_heading"><div class="et_pb_heading_container"><h2 class="et_pb_module_header">Eine Hochzeit mit Ballhaus-Flair</h2></div></div>
+      <div class="et_pb_module et_pb_text"><div class="et_pb_text_inner"><p>Im Großen Saal feiern Sie vor einer Bühne mit schweren roten Vorhängen. Riesige Kronleuchter hängen von der 9,60 Meter hohen Decke; je nach Bestuhlung finden hier bis zu 300 Gäste Platz.</p><p>Begrüßen Sie Ihre Gesellschaft in der rustikalen Destille und nutzen Sie den Grünen Salon als ruhige Lounge oder großzügigen Buffetbereich.</p></div></div>
+      <div class="et_pb_module et_pb_button_module_wrapper"><a class="et_pb_button" href="https://queens45.de/?page_id=141">Hochzeitslocation entdecken</a></div>
+    </div>
+    <div class="et_pb_column et_pb_column_1_2 et-last-child">
+      <div class="et_pb_module et_pb_image q45-rahmen q45-hoch"><span class="et_pb_image_wrap"><img src="https://queens45.de/wp-content/uploads/2026/10/GoldenSET.jpeg" width="768" height="1024" loading="lazy" alt="Festlich gedeckter runder Tisch mit goldenen Platztellern im Großen Saal des Queens 45 BC"></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SEKTION 4 · RÄUME
+     Divi: Sektion (regulär), Hintergrund weiß
+     Zeile A: 1 Spalte (4_4) – Text (Dachzeile) · Überschrift (H2)
+     Zeile B: 3 Spalten (1_3 + 1_3 + 1_3), je Spalte: Bild · Überschrift (H3) · Text (Unterzeile) · Text · Button
+     Zeile C: 1 Spalte (4_4) – Text-Modul mit Kapazitäts-Tabelle
+     ============================================================ -->
+<div class="et_pb_section et_section_regular q45-raeume" id="raeume">
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_4_4 et-last-child">
+      <div class="et_pb_module et_pb_text q45-eyebrow"><div class="et_pb_text_inner"><p>Die Räume</p></div></div>
+      <div class="et_pb_module et_pb_heading"><div class="et_pb_heading_container"><h2 class="et_pb_module_header">Vier Räume für Ihre Veranstaltung</h2></div></div>
+    </div>
+  </div>
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_1_3 q45-raum">
+      <div class="et_pb_module et_pb_image q45-quer"><span class="et_pb_image_wrap"><img src="https://queens45.de/wp-content/uploads/2026/10/DSaal-Rund.jpeg" width="1182" height="665" loading="lazy" alt="Großer Saal des Queens 45 BC mit Bühne, roten Vorhängen und gedeckten Banketttischen"></span></div>
+      <div class="et_pb_module et_pb_heading"><div class="et_pb_heading_container"><h3 class="et_pb_module_header">Großer Saal</h3></div></div>
+      <div class="et_pb_module et_pb_text q45-unterzeile"><div class="et_pb_text_inner"><p>Ballhaus-Flair auf ca. 200 m²</p></div></div>
+      <div class="et_pb_module et_pb_text"><div class="et_pb_text_inner"><p>Bühne mit roten Vorhängen, Cocktailbar sowie Licht- und Tontechnik. Bis zu 300 Gäste beim Stehempfang.</p></div></div>
+      <div class="et_pb_module et_pb_button_module_wrapper"><a class="et_pb_button" href="https://queens45.de/?page_id=141">Großen Saal entdecken</a></div>
+    </div>
+    <div class="et_pb_column et_pb_column_1_3 q45-raum">
+      <div class="et_pb_module et_pb_image q45-quer"><span class="et_pb_image_wrap"><img src="https://queens45.de/wp-content/uploads/2026/10/Bild-2.jpeg" width="1360" height="906" loading="lazy" alt="Lange Festtafel mit grünen Stühlen unter Kronleuchtern im Queens 45 BC"></span></div>
+      <div class="et_pb_module et_pb_heading"><div class="et_pb_heading_container"><h3 class="et_pb_module_header">Champagner-Bar</h3></div></div>
+      <div class="et_pb_module et_pb_text q45-unterzeile"><div class="et_pb_text_inner"><p>Art déco auf 140 m²</p></div></div>
+      <div class="et_pb_module et_pb_text"><div class="et_pb_text_inner"><p>Kronleuchter und Echtholztresen schaffen den Rahmen für Empfänge mit bis zu 100 Gästen.</p></div></div>
+      <div class="et_pb_module et_pb_button_module_wrapper"><a class="et_pb_button" href="#anfrage">Champagner-Bar anfragen</a></div>
+    </div>
+    <div class="et_pb_column et_pb_column_1_3 et-last-child q45-raum">
+      <!-- Platzhalter: Auf der Live-Seite fehlt hier ebenfalls ein Foto. Durch ein Bild-Modul ersetzen, sobald ein Foto von Grünem Salon oder Destille vorliegt. -->
+      <div class="et_pb_module et_pb_text q45-platzhalter"><span>Grüner Salon &amp; Destille</span><small>Foto folgt</small></div>
+      <div class="et_pb_module et_pb_heading"><div class="et_pb_heading_container"><h3 class="et_pb_module_header">Grüner Salon &amp; Destille</h3></div></div>
+      <div class="et_pb_module et_pb_text q45-unterzeile"><div class="et_pb_text_inner"><p>Zwei Räume mit eigenem Charakter</p></div></div>
+      <div class="et_pb_module et_pb_text"><div class="et_pb_text_inner"><p>Der Grüne Salon bietet auf ca. 70 m² Tageslicht, Parkett und Platz für bis zu 70 Gäste. Die rustikale Destille empfängt bis zu 100 Gäste an ihrem opulenten Tresen; eine Bildergalerie erinnert an die 20er und 30er Jahre.</p></div></div>
+      <div class="et_pb_module et_pb_button_module_wrapper"><a class="et_pb_button" href="#anfrage">Weitere Räume anfragen</a></div>
+    </div>
+  </div>
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_4_4 et-last-child">
+      <div class="et_pb_module et_pb_text q45-tabelle"><div class="et_pb_text_inner">
+        <table>
+          <caption>Kapazitäten im Überblick</caption>
+          <thead><tr><th scope="col">Raum</th><th scope="col">Stehempfang</th><th scope="col">Steh-Sitz-Kombination</th><th scope="col">Bankett, eckige Tische</th><th scope="col">Bankett, runde Tische</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Großer Saal</th><td>300</td><td>auf Anfrage</td><td>180</td><td>120</td></tr>
+            <tr><th scope="row">Champagner-Bar</th><td>100</td><td>80</td><td>40</td><td>40</td></tr>
+            <tr><th scope="row">Grüner Salon</th><td>70</td><td>60</td><td>55</td><td>48</td></tr>
+            <tr><th scope="row">Destille</th><td>100</td><td>80</td><td>55</td><td>nicht vorgesehen</td></tr>
+          </tbody>
+        </table>
+        <p class="q45-hinweis">Alle Angaben in Personen. Die Gästezahl hängt von der gewählten Bestuhlung ab.</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SEKTION 5 · AUSSTATTUNG
+     Divi: Sektion (regulär), Hintergrund hell (#f7f1f0)
+     Zeile A: 1 Spalte (4_4) – Text (Dachzeile) · Überschrift (H2)
+     Zeile B: 2 Spalten (1_2 + 1_2), je Spalte: Blurb (ohne Icon, Titel H3) · Button
+     ============================================================ -->
+<div class="et_pb_section et_section_regular q45-band-hell q45-blurbs" id="ausstattung">
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_4_4 et-last-child">
+      <div class="et_pb_module et_pb_text q45-eyebrow"><div class="et_pb_text_inner"><p>Ausstattung</p></div></div>
+      <div class="et_pb_module et_pb_heading"><div class="et_pb_heading_container"><h2 class="et_pb_module_header">Frei planen, bestens ausgestattet feiern</h2></div></div>
+    </div>
+  </div>
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_1_2">
+      <div class="et_pb_module et_pb_blurb et_pb_blurb_position_top"><div class="et_pb_blurb_content"><div class="et_pb_blurb_container"><h3 class="et_pb_module_header">Catering aus eigener Küche</h3><div class="et_pb_blurb_description"><p>Ob festliches Menü oder lockeres Buffet: Sie entscheiden selbst, womit Ihre Gäste verwöhnt werden.</p></div></div></div></div>
+      <div class="et_pb_module et_pb_button_module_wrapper"><a class="et_pb_button" href="#anfrage">Catering planen</a></div>
+    </div>
+    <div class="et_pb_column et_pb_column_1_2 et-last-child">
+      <div class="et_pb_module et_pb_blurb et_pb_blurb_position_top"><div class="et_pb_blurb_content"><div class="et_pb_blurb_container"><h3 class="et_pb_module_header">Technik für jeden Anlass</h3><div class="et_pb_blurb_description"><p>Fest installierte Licht- und Tontechnik unterstützt Feiern und Konzerte; hochwertige Tagungstechnik schafft den passenden Rahmen für Seminare.</p></div></div></div></div>
+      <div class="et_pb_module et_pb_button_module_wrapper"><a class="et_pb_button" href="#anfrage">Technik anfragen</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SEKTION 6 · GESCHICHTE
+     Divi: Sektion (regulär), Hintergrund Primärfarbe (#680909), Text hell
+     Zeile: 2 Spalten (1_2 + 1_2)
+     Spalte 1: Bild · Spalte 2: Text (Dachzeile) · Überschrift (H2) · Text
+     ============================================================ -->
+<div class="et_pb_section et_section_regular q45-band-rot" id="geschichte">
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_1_2">
+      <div class="et_pb_module et_pb_image q45-rahmen q45-quer"><span class="et_pb_image_wrap"><img src="https://queens45.de/wp-content/uploads/2026/10/V-Grosser-Saal-Dinner-e1793115598554.jpg" width="1000" height="667" loading="lazy" alt="Bei Kerzenlicht gedeckte Tische mit roten Stühlen im Großen Saal des Queens 45 BC"></span></div>
+    </div>
+    <div class="et_pb_column et_pb_column_1_2 et-last-child">
+      <div class="et_pb_module et_pb_text q45-eyebrow"><div class="et_pb_text_inner"><p>Seit Mai 2000</p></div></div>
+      <div class="et_pb_module et_pb_heading"><div class="et_pb_heading_container"><h2 class="et_pb_module_header">Der Glanz der Goldenen 20er lebt weiter</h2></div></div>
+      <div class="et_pb_module et_pb_text"><div class="et_pb_text_inner"><p>In den ehemaligen Charlottenburger Festsälen lebt seit Mai 2000 die Atmosphäre der Berliner Ballhäuser wieder auf. Hohe Decken, Kronleuchter und eine Bühne mit schweren roten Vorhängen lassen die Eleganz vergangener Tanzabende spürbar werden. Rokoko-Räume und expressionistisches Dekor verbinden sich mit der Ausstattung für Veranstaltungen von heute.</p><p>Im Queens 45 BC führen wir diese Geschichte fort: Wir möchten Menschen einen Ort bieten, an dem sie zusammenkommen, feiern und ihre eigenen unvergesslichen Momente schaffen – vom Empfang im kleinen Kreis bis zur großen Ballnacht.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SEKTION 7 · ANFRAGE (Call to Action)
+     Divi: Sektion (regulär), Hintergrundbild „Großer Saal Dinner“ + rote Überlagerung (Parallax optional)
+     Zeile: 1 Spalte (4_4), Spalte mit Doppelrahmen
+     Module: Überschrift (H2) · Text · Button
+     ============================================================ -->
+<div class="et_pb_section et_section_regular q45-anfrage" id="anfrage" style="background-image:url('https://queens45.de/wp-content/uploads/2026/10/V-Grosser-Saal-Dinner-e1793115598554.jpg')">
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_4_4 et-last-child">
+      <div class="et_pb_module et_pb_heading"><div class="et_pb_heading_container"><h2 class="et_pb_module_header">Ihre Veranstaltung im Queens 45 BC planen</h2></div></div>
+      <div class="et_pb_module et_pb_text et_pb_text_align_center"><div class="et_pb_text_inner"><p>Verraten Sie uns Ihren Wunschtermin und Ihre Gästezahl. Wir beraten Sie persönlich zu den Möglichkeiten für Ihre Feier in Berlin-Charlottenburg.</p></div></div>
+      <div class="et_pb_module et_pb_button_module_wrapper et_pb_text_align_center"><a class="et_pb_button q45-btn-hell" href="https://queens45.de/?page_id=183">Jetzt Wunschtermin anfragen</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     SEKTION 8 · KONTAKT
+     Divi: Sektion (regulär), Hintergrund weiß
+     Zeile: 3 Spalten (1_3 + 1_3 + 1_3), je Spalte ein Blurb (ohne Icon, Titel H3)
+     ============================================================ -->
+<div class="et_pb_section et_section_regular q45-kontakt q45-blurbs" id="kontakt">
+  <div class="et_pb_row">
+    <div class="et_pb_column et_pb_column_1_3">
+      <div class="et_pb_module et_pb_blurb et_pb_blurb_position_top"><div class="et_pb_blurb_content"><div class="et_pb_blurb_container"><h3 class="et_pb_module_header">Telefon</h3><div class="et_pb_blurb_description"><p><a href="tel:+493039885040">030-39 88 50 40</a></p></div></div></div></div>
+    </div>
+    <div class="et_pb_column et_pb_column_1_3">
+      <div class="et_pb_module et_pb_blurb et_pb_blurb_position_top"><div class="et_pb_blurb_content"><div class="et_pb_blurb_container"><h3 class="et_pb_module_header">E-Mail</h3><div class="et_pb_blurb_description"><p><a href="mailto:info@queens45.de">info@queens45.de</a></p></div></div></div></div>
+    </div>
+    <div class="et_pb_column et_pb_column_1_3 et-last-child">
+      <div class="et_pb_module et_pb_blurb et_pb_blurb_position_top"><div class="et_pb_blurb_content"><div class="et_pb_blurb_container"><h3 class="et_pb_module_header">Adresse</h3><div class="et_pb_blurb_description"><p>Königin-Elisabeth-Straße 45<br>14059 Berlin-Charlottenburg</p></div></div></div></div>
+    </div>
+  </div>
+</div>
+</div>
